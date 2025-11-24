@@ -3,9 +3,9 @@ import os
 os.environ['TF_USE_LEGACY_KERAS'] = '1'
 
 import streamlit as st
-import tensorflow as tf
-from tensorflow.keras.models import load_model
-# from keras.models import load_model  
+#import tensorflow as tf
+# from tensorflow.keras.models import load_model
+from tensorflow import keras  
 from PIL import Image, ImageOps  
 import numpy as np
 
@@ -20,7 +20,7 @@ st.write("Usa la cámara para saber si es un perro o un gato.")
 @st.cache_resource
 def carga_modelo():
     # Cargamos el modelo
-    modelo = load_model("st-app/keras_model.h5", compile=False)
+    modelo = keras.models.load_model("st-app/keras_model.h5", compile=False)
     # Carga las etiquetas de las clases
     clases = open("st-app/labels.txt", "r").readlines()
     return modelo, clases
