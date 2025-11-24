@@ -35,3 +35,33 @@ except Exception as e:
 
 # 2. CAPTURAMOS LA IMAGEN HACIENDO USO DE LA CÁMARA
 imagen_camara = st.camera_input("Haz una foto")
+
+# 3. PREDICCIÓN
+if imagen_camara is not None:
+    imagen = Image.open(imagen_camara).convert("RGB")
+    image = ImageOps.fit(imagen, (224, 224), Image.Resampling.LANCZOS)
+    image_array = np.asarray(imagen)
+    normalizada_imagen_array = (imagen_array.astype(np.float32) / 127.5) - 1
+
+    # Crear un array para un lote de 1 imagen. ndarray = N-Dimensional Array
+    lote_imagenes = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+    lote_imagenes[0] = normalizada_imagen_array
+
+    # Predicción
+    resultados= mi_modelo.predict(lote_imagenes)
+    indice = np.argmax(resultados[0])
+    etiqueta = nombre_clases[indice]
+    probabilidad = resultados[0][index]
+
+    st.divider() # Línea separadora visual
+
+    if "Perro" in etiqueta:
+            st.success(f"¡Es un **PERRO**! 🐶")
+            st.balloons() # Efecto visual divertido
+    else:
+            st.success(f"¡Es un **GATO**! 🐱")
+            st.snow() # Efecto visual divertido
+            
+    st.write(f"Estoy un **{probabilidad:.0%}** seguro.")
+
+
