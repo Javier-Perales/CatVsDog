@@ -8,3 +8,7 @@ st.set_page_config(page_title="Reconocimiento Perros vs Gatos", page_icon="🐾"
 
 st.title("🐶 Detector de Mascotas 🐱")
 st.write("Usa la cámara para saber si es un perro o un gato.")
+
+
+# WIDGET DE CÁMARA
+imagen_camara = st.camera_input("Haz una foto")
