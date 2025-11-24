@@ -39,8 +39,8 @@ imagen_camara = st.camera_input("Haz una foto")
 # 3. PREDICCIÓN
 if imagen_camara is not None:
     imagen = Image.open(imagen_camara).convert("RGB")
-    image = ImageOps.fit(imagen, (224, 224), Image.Resampling.LANCZOS)
-    image_array = np.asarray(imagen)
+    imagen = ImageOps.fit(imagen, (224, 224), Image.Resampling.LANCZOS)
+    imagen_array = np.asarray(imagen)
     normalizada_imagen_array = (imagen_array.astype(np.float32) / 127.5) - 1
 
     # Crear un array para un lote de 1 imagen. ndarray = N-Dimensional Array
