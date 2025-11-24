@@ -51,7 +51,7 @@ if imagen_camara is not None:
     resultados= mi_modelo.predict(lote_imagenes)
     indice = np.argmax(resultados[0])
     etiqueta = nombre_clases[indice]
-    probabilidad = resultados[0][index]
+    probabilidad = resultados[0][indice]
 
     st.divider() # Línea separadora visual
 
