@@ -10,7 +10,7 @@ st.set_page_config(page_title="Reconocimiento Perros vs Gatos", page_icon="🐾"
 st.title("🐶 Detector de Mascotas 🐱")
 st.write("Usa la cámara para saber si es un perro o un gato.")
 
-# CARGAMOS EL MODELO Y ETIQUETAS
+# DEFINIMOS UNA FUNCIÓN PARA CARGAR EL MODELO Y GUARDARLO EN CACHE
 # Usamos cache para que no se cargue cada vez que detecta un movimiento
 @st.cache_resource
 def carga_modelo():
@@ -20,8 +20,13 @@ def carga_modelo():
     clases = open("st-app/labels.txt", "r").readlines()
     return modelo, clases
 
+# 1.CARGAMOS EL MODELO Y ETIQUETAS
+try:
+    model, class_names = load_keras_model()
+except Exception as e:
+    st.error(f"Error al cargar el modelo: {e}")
+    st.stop()
 
 
-
-# WIDGET DE CÁMARA
+# 2. CAPTURAMOS LA IMAGEN HACIENDO USO DE LA CÁMARA
 imagen_camara = st.camera_input("Haz una foto")
