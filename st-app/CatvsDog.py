@@ -20,7 +20,7 @@ st.write("Usa la cámara para saber si es un perro o un gato.")
 @st.cache_resource
 def carga_modelo():
     # Cargamos el modelo
-    modelo = keras.models.load_model("st-app/keras_model.h5", compile=False)
+    modelo = load_model("st-app/keras_model.h5", compile=False)
     # Carga las etiquetas de las clases
     clases = open("st-app/labels.txt", "r").readlines()
     return modelo, clases
