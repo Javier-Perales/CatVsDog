@@ -22,7 +22,7 @@ def carga_modelo():
 
 # 1.CARGAMOS EL MODELO Y ETIQUETAS
 try:
-    mi_modelo, nombre_clases = cargar_modelo()
+    mi_modelo, nombre_clases = carga_modelo()
 except Exception as e:
     st.error(f"Error al cargar el modelo: {e}")
     st.stop()
