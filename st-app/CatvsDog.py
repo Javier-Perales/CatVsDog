@@ -1,3 +1,7 @@
+import os
+# Esto obliga a TensorFlow a usar el modo compatibilidad con versiones antiguas
+os.environ['TF_USE_LEGACY_KERAS'] = '1'
+
 import streamlit as st
 from tensorflow import keras
 # from keras.models import load_model  
