@@ -4,7 +4,7 @@ os.environ['TF_USE_LEGACY_KERAS'] = '1'
 
 import streamlit as st
 import tensorflow as tf
-from tf import keras
+from tensorflow.keras.models import load_model
 # from keras.models import load_model  
 from PIL import Image, ImageOps  
 import numpy as np
