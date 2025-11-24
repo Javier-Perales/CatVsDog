@@ -62,6 +62,6 @@ if imagen_camara is not None:
             st.success(f"¡Es un **GATO**! 🐱")
             st.snow() # Efecto visual divertido
             
-    st.write(f"Estoy un **{probabilidad:.0%}** seguro.")
+    st.write(f"Estoy un {probabilidad}% seguro.")
 
 
